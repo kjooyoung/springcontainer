@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+        
+	<bean class="com.douzone.springcontainer.User1" />
+	
+	<bean class="com.douzone.springcontainer.User" name="user" id="usr"/>
+	
+	<bean class="com.douzone.springcontainer.User"/>
+	
+	<bean class="com.douzone.springcontainer.User" id="usr2">
+		<constructor-arg value="둘리"/>
+		<!-- list 설정 -->
+		<property name="friends">
+			<list>
+				<value>마이콜</value>
+				<value>도우너</value>
+				<value>또치</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean class="com.douzone.springcontainer.User" id="usr3">
+		<!-- 생성자의 파라미터 -->
+		<constructor-arg value="마이콜" index="1"/>
+		<constructor-arg value="1" index="0"/>
+		<property name="friend">
+			<bean class="com.douzone.springcontainer.Friend">
+				<property name="name" value="길동"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean class="com.douzone.springcontainer.Friend" id="friend">
+		<!-- setter의 파라미터 -->
+		<property name="name" value="도우너"/>
+	</bean>
+	
+	<bean class="com.douzone.springcontainer.User" id="usr4">
+		<!-- 생성자의 파라미터 순서를 맞춰주면 index 값 줄 필요 없음-->
+		<constructor-arg value="2" />
+		<constructor-arg value="또치"/>
+		<!-- friend bean을 user에 주입 -->
+		<property name="friend" ref="friend"/>
+	</bean>
+</beans>
