@@ -3,8 +3,13 @@ package com.douzone.springcontainer;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
+
+import com.douzone.springcontainer.user.Friend;
+import com.douzone.springcontainer.user.User;
+import com.douzone.springcontainer.user.User1;
 
 public class Main {
 
@@ -14,7 +19,7 @@ public class Main {
 	}
 
 	private static void testApplicationContext() {
-		ApplicationContext ac = new ClassPathXmlApplicationContext("config/applicationContext.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext("config/user/applicationContext.xml");
 		User1 user1 = ac.getBean(User1.class);
 		System.out.println(user1.getName());
 		
@@ -45,16 +50,18 @@ public class Main {
 		
 		User user4 = (User)ac.getBean("usr4");
 		System.out.println(user4);
+		
+		((ConfigurableApplicationContext)ac).close();
 	}
 
 	public static void testBeanFactory() {
-		BeanFactory bf1 = new XmlBeanFactory(new ClassPathResource("config/applicationContext2.xml"));
+		BeanFactory bf1 = new XmlBeanFactory(new ClassPathResource("config/user/applicationContext2.xml"));
 
 		// 어노테이션 설정인 경우 id가 자동으로 만들어 짐. User1 => user1
 		User1 user1 = (User1) bf1.getBean("user1");
 		System.out.println(user1.getName());
 
-		BeanFactory bf2 = new XmlBeanFactory(new ClassPathResource("config/applicationContext.xml"));
+		BeanFactory bf2 = new XmlBeanFactory(new ClassPathResource("config/user/applicationContext.xml"));
 
 		// xml bean 설정인 경우에는 id를 설정하지 않으면 에러.
 		// id 대신 타입으로 빈을 가져 올 수 있다.
