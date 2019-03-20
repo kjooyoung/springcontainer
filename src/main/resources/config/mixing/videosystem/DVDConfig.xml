@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+        http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+        
+	<bean id="avengers" class="com.douzone.springcontainer.videosystem.Avengers"/>
+	
+	<bean id="dvdPack" 
+		  class="com.douzone.springcontainer.videosystem.DVDPack">
+		<constructor-arg value="Avengers Triplepack"/>
+		<constructor-arg>
+			<!-- list 태그는 중복값을 넣을 수 있지만 set 태그는 중복값 X -->
+			<list>
+				<ref bean="avengers"/>
+				<ref bean="avengersInfinityWar"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<util:list id="actorList">
+		<value>Robert Downey Jr.</value>
+		<value>Chris Hemsworth</value>
+		<value>Benedict Cumberbatch</value>
+		<value>Josh Brolin</value>
+	</util:list>
+	<bean id="avengersInfinityWar" 
+		  class="com.douzone.springcontainer.videosystem.BlankDisc"
+		  p:title="Avengers Infinity War"
+		  p:studio="MARVEL"
+		  p:actors="actorList"/>
+		
+</beans>

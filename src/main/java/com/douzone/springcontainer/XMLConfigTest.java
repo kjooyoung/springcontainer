@@ -17,7 +17,7 @@ public class XMLConfigTest {
 		testXMLConfig02();
 	}
 	
-	// XML Config01
+	// XML Config01 - 명시적 설정
 	// annotation config
 	public static void testXMLConfig01() {
 		ApplicationContext appCtx = //xml은 resource 패키지에 위치해야함
@@ -36,12 +36,12 @@ public class XMLConfigTest {
 	// bean config
 	public static void testXMLConfig02() {
 		ApplicationContext appCtx = //xml은 resource 패키지에 위치해야함
-				new ClassPathXmlApplicationContext("config/videosystem/DVDPlayerConfig.xml");
+				new ClassPathXmlApplicationContext("config/videosystem/VideoSystemConfig.xml");
 		
 		DigitalVideoDisc dvd = appCtx.getBean(Avengers.class);
 		System.out.println(dvd);
 		
-		dvd = (DigitalVideoDisc)appCtx.getBean("digitalVideoDisc");
+		dvd = (DigitalVideoDisc)appCtx.getBean("avengersInfinityWar");
 		System.out.println(dvd);
 		
 		DVDPack dvdPack = appCtx.getBean(DVDPack.class);

@@ -19,50 +19,50 @@
 	<!-- <bean class="com.douzone.springcontainer.videosystem.Avengers"/> -->
 	
 	<!-- 02. 설정된 bean에 id 부여하기 -->
-	<!-- <bean id="digitalVideoDisc" class="com.douzone.springcontainer.videosystem.Avengers"/> -->
+	<!-- <bean id="avengersInfinityWar" class="com.douzone.springcontainer.videosystem.Avengers"/> -->
 	<bean id="avengers" class="com.douzone.springcontainer.videosystem.Avengers"/>
 	
 	<!-- 03. 생성자를 통한 bean 주입 01 -->
 	<!-- <bean id="dvdPlayer" class="com.douzone.springcontainer.videosystem.DVDPlayer">
-		<constructor-arg ref="digitalVideoDisc"/>
+		<constructor-arg ref="avengersInfinityWar"/>
 	</bean> -->
 	
 	<!-- 04. 생성자를 통한 bean 주입 02 : c-namespace 사용 -->
 	<!-- <bean id="dvdPlayer" 
 		  class="com.douzone.springcontainer.videosystem.DVDPlayer"
-		  c:dvd-ref="digitalVideoDisc"/> --> <!-- dvd는 생성자 파라미터의 변수명임 -->
+		  c:dvd-ref="avengersInfinityWar"/> --> <!-- dvd는 생성자 파라미터의 변수명임 -->
 		  
 	<!-- 05. 생성자를 통한 bean 주입 03 : c-namespace 의 index 사용 -->
 	<!-- <bean id="dvdPlayer" 
 		  class="com.douzone.springcontainer.videosystem.DVDPlayer"
-		  c:_0-ref="digitalVideoDisc"/> -->
+		  c:_0-ref="avengersInfinityWar"/> -->
 		  
 	<!-- 06. 생성자를 통한 bean 주입 04 : c-namespace 사용 argument가 하나인 경우 -->
 	<!-- <bean id="dvdPlayer" 
 		  class="com.douzone.springcontainer.videosystem.DVDPlayer"
-		  c:_-ref="digitalVideoDisc"/> -->
+		  c:_-ref="avengersInfinityWar"/> -->
 		  
 	<!-- 07. 생성자를 통한 bean 주입 05 : listeral 값을 생성자에 주입 01 -->
-	<!-- <bean id="digitalVideoDisc" 
+	<!-- <bean id="avengersInfinityWar" 
 		  class="com.douzone.springcontainer.videosystem.BlankDisc">
 		  <constructor-arg name="title" value="Avengers Infinity War"/>
 		  <constructor-arg name="studio" value="MARVEL"/>
 	</bean> -->
 		  
 	<!-- 08. 생성자를 통한 bean 주입 06 : listeral 값을 생성자에 주입 02 -->
-	<!-- <bean id="digitalVideoDisc" 
+	<!-- <bean id="avengersInfinityWar" 
 		  class="com.douzone.springcontainer.videosystem.BlankDisc"
 		  c:title="Avengers Infinity War"
 		  c:studio="MARVEL"/> -->
 		  
 	<!-- 09. 생성자를 통한 bean 주입 07 : listeral 값을 생성자에 주입 03-->
-	<!-- <bean id="digitalVideoDisc" 
+	<!-- <bean id="avengersInfinityWar" 
 		  class="com.douzone.springcontainer.videosystem.BlankDisc"
 		  c:_0="Avengers Infinity War"
 		  c:_1="MARVEL"/> -->
 	
 	<!-- 10. 생성자를 통한 bean 주입 08 : 와이어링 콜렉션 01 -->
-	<!-- <bean id="digitalVideoDisc" 
+	<!-- <bean id="avengersInfinityWar" 
 		  class="com.douzone.springcontainer.videosystem.BlankDisc">
 		<constructor-arg value="Avengers Infinity War"/>
 		<constructor-arg value="MARVEL"/>
@@ -71,7 +71,7 @@
 	</bean> -->
 	
 	<!-- 11. 생성자를 통한 bean 주입 09 : 와이어링 콜렉션 02 -->
-	<!-- <bean id="digitalVideoDisc" 
+	<!-- <bean id="avengersInfinityWar" 
 		  class="com.douzone.springcontainer.videosystem.BlankDisc">
 		<constructor-arg value="Avengers Infinity War"/>
 		<constructor-arg value="MARVEL"/>
@@ -94,7 +94,7 @@
 			<!-- list 태그는 중복값을 넣을 수 있지만 set 태그는 중복값 X -->
 			<list>
 				<ref bean="avengers"/>
-				<ref bean="digitalVideoDisc"/>
+				<ref bean="avengersInfinityWar"/>
 			</list>
 		</constructor-arg>
 	</bean>
@@ -103,16 +103,16 @@
 	<!-- <bean id="dvdPlayer" 
 		  class="com.douzone.springcontainer.videosystem.DVDPlayer">
 		name값은 setter의 메소드명에 맞춰야함
-		<property name="digitalVideoDisc" ref="digitalVideoDisc"/>
+		<property name="digitalVideoDisc" ref="avengersInfinityWar"/>
 	</bean> -->
 	
 	<!-- 14. property를 통한 bean 주입 02 -->
 	<bean id="dvdPlayer" 
 		  class="com.douzone.springcontainer.videosystem.DVDPlayer"
-		  p:digitalVideoDisc-ref="digitalVideoDisc"/>
+		  p:digitalVideoDisc-ref="avengersInfinityWar"/>
 	
 	<!-- 15. property를 통한 bean 주입 03 : 리터럴 값 주입 01 -->
-	<!-- <bean id="digitalVideoDisc" 
+	<!-- <bean id="avengersInfinityWar" 
 		  class="com.douzone.springcontainer.videosystem.BlankDisc">
 		<property name="title" value="Avengers Infinity War"/>
 		<property name="studio" value="MARVEL"/>
@@ -128,7 +128,7 @@
 	</bean> -->
 	
 	<!-- 16. property를 통한 bean 주입 04 : 리터럴 값 주입 02 -->
-	<!-- <bean id="digitalVideoDisc" 
+	<!-- <bean id="avengersInfinityWar" 
 		  class="com.douzone.springcontainer.videosystem.BlankDisc"
 		  p:title="Avengers Infinity War"
 		  p:studio="MARVEL">
@@ -150,7 +150,7 @@
 		<value>Benedict Cumberbatch</value>
 		<value>Josh Brolin</value>
 	</util:list>
-	<bean id="digitalVideoDisc" 
+	<bean id="avengersInfinityWar" 
 		  class="com.douzone.springcontainer.videosystem.BlankDisc"
 		  p:title="Avengers Infinity War"
 		  p:studio="MARVEL"
